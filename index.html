@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="screen">
+      <div class="topbar">
+        <span class="fas fa-bars" onclick="toggleSidebar()"></span>
+        <button>TO-DO</button>
+        <div class="input-icon">
+          <span class="fas fa-search"></span>
+          <input type="text" id="search" placeholder="Search" />
+        </div>
+        <span class="fas fa-ellipsis-v"></span>
+        <span class="fas fa-user-circle" onclick="openAuthModal()"></span>
+      </div>
+
+      <div style="display: flex">
+        <div class="sidebar" id="sidebar">
+          <button onclick="showSection('notes')">
+            <span class="fas fa-lightbulb"></span> Notes
+          </button>
+          <button onclick="showSection('reminder')">
+            <span class="fas fa-bell"></span> Reminder
+          </button>
+          <button onclick="showSection('editLabel')">
+            <span class="fas fa-tags"></span> Edit label
+          </button>
+          <button onclick="showSection('archive')">
+            <span class="fas fa-archive"></span> Archive
+          </button>
+          <button onclick="showSection('trash')">
+            <span class="fas fa-trash"></span> Trash
+          </button>
+        </div>
+
+        <div class="main">
+          <div class="note-input" id="note-input">
+            <input type="text" id="notes" placeholder="Take a Note" />
+            <span class="fas fa-plus" onclick="addNote()"></span>
+          </div>
+          <div id="note-list"></div>
+          <div id="reminder-list" style="display: none">Reminder section</div>
+          <div id="edit-label" style="display: none">Edit label section</div>
+          <div id="archive-list" style="display: none">Archive section</div>
+          <div id="trash-list" style="display: none">Trash section</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="auth-modal" class="auth-modal" style="display: none">
+      <div class="auth-modal-content">
+        <span id="close-modal-btn" class="close" onclick="closeAuthModal()"
+          >&times;</span
+        >
+        <div id="auth-section">
+          <h2>Login</h2>
+          <input type="text" id="username" placeholder="Username" />
+          <input type="password" id="password" placeholder="Password" />
+          <button id="login-button">Login</button>
+          <hr />
+          <button onclick="showSignupForm()">Sign Up</button>
+        </div>
+        <div id="signup-section" style="display: none">
+          <h2>Sign Up</h2>
+          <input type="text" id="new-username" placeholder="Username" />
+          <input type="password" id="new-password" placeholder="Password" />
+          <button id="signup-button">Sign Up</button>
+          <hr />
+          <button onclick="showLoginForm()">Back to Login</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
